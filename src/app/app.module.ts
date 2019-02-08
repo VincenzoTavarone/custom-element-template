@@ -1,16 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
+// import { NomeComponent } from percorso_componente;
 
-import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [    
+    //Nome Componente che implementa il custom element
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents : [
+    // Nome Componente che implementa il custom element
+  ]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private injector : Injector) {}
+
+  ngDoBootstrap() {
+    // let element = createCustomElement(NomeComponente, {
+    //   injector : this.injector
+    // });
+    // customElements.define('tag-del-custom-element', element);
+  }
+
+}

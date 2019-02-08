@@ -1,27 +1,32 @@
 # CustomElementTemplate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+Template per la creazione dei custom element in angular
 
-## Development server
+## Inizializzazione del progetto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Si clona il progetto (o si scarica come zip)
+2. Si rimuovono i riferimenti a git cancellando la cartella .git
+3. Si installano le librerie richieste utilizzando npm
 
-## Code scaffolding
+## Creazione del custom element
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Si procede con la creazione di un componente
+```
+ng g c <nome_componente>
+```
+Nel file `<nome_componente>.component.ts` si modifica il decoratore `@Component` aggiungendo
+```
+encapsulation : ViewEncapsulation.Emulated
+```
+Nel file `app.module.ts` va importato il componente che si vuole rendere custom element e va modificato il modulo come indicato nei commenti presenti nel file.
 
-## Build
+Nel file `package.json` va modificato il nome del file di destinazione
+```
+return gulp.src([
+        './dist/*/main.*.js',
+    ]).pipe(concat('rename_me.js')) <-- da rinominare
+    .pipe(gulp.dest('./dist-prod'))
+```
+## Build del custom element
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Per effettuare la build va eseguito il comando `npm run build:element`. Il file risultante sarà presente nella cartella `dist-production`
