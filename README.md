@@ -20,7 +20,7 @@ encapsulation : ViewEncapsulation.Emulated
 ```
 Nel file `app.module.ts` va importato il componente che si vuole rendere custom element e va modificato il modulo come indicato nei commenti presenti nel file.
 
-Nel file `package.json` va modificato il nome del file di destinazione
+Nel file `gulpfile.json` va modificato il nome del file di destinazione
 ```
 return gulp.src([
         './dist/*/main.*.js',
